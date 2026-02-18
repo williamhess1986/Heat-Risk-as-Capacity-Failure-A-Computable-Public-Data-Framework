@@ -1,331 +1,114 @@
-Heat Risk and System Capacity
-A Practical, Computable Public-Data Framework
-The Core Idea
+Heat Risk as Capacity Failure
+The Capacity-Failure Model of Heat Risk
+The Core Problem
 
-Heat disasters are rarely about the single hottest temperature of the day.
+Heat disasters occur when people, infrastructure, and socio-economic systems can no longer shed accumulated thermal or hydration load. Risk is driven by cumulative load plus recovery failure — not peak temperature alone. Systems fail faster when already strained by poverty, poor housing, chronic illness, aging populations, or lack of legal and economic protections.
 
-They occur when system capacity fails — when people, buildings, and infrastructure can no longer shed accumulated heat.
+Heat risk operates across multiple time scales:
 
-The key driver is cumulative heat load with recovery:
+Acute (hours–days): heatstroke, dehydration, power outages, emergency spikes
 
-How hot it gets
+Sub-acute (days–weeks): mortality lag, hospital overload, cascading infrastructure strain
 
-How humid it is
+Chronic (months–years): organ damage, economic erosion, workforce decline, migration pressure
 
-How long it lasts
+These timescales reinforce that heat disasters are not single events but progressive capacity failures.
 
-Whether nights cool enough for bodies and systems to reset
+Beyond the 35 °C Wet-Bulb Threshold
 
-A city’s effective heat stress is not one number.
+The 35 °C wet-bulb limit represents a theoretical survivability ceiling under idealized conditions. Real-world danger is better captured by Wet-Bulb Globe Temperature (WBGT), which incorporates solar radiation, air movement, humidity, and metabolic activity.
 
-It is a location-specific heat burden (Tw*) shaped by:
+Certain medications (diuretics, beta-blockers, anticholinergics, some antidepressants), chronic illness, aging, infancy, and lack of acclimatization can shift the failure threshold far below theoretical limits.
 
-Climate baseline
+Heat also impairs cognitive and behavioral capacity, reducing judgment, risk perception, productivity, and self-protective behavior while increasing accidents, workplace injuries, and conflict risk — meaning decision-making systems themselves degrade under thermal load.
 
-Housing conditions
+The Recovery Window and Urban Inequality
 
-Air-conditioning access
+Even small average temperature increases (~1–2 °C) disproportionately raise nighttime minimums, cutting the body's recovery window.
 
-Grid reliability
+Urban heat islands — driven by asphalt, concrete, reduced vegetation, and waste heat from cooling systems — compound this. Historical redlining strongly predicts higher neighborhood temperatures, meaning disadvantaged communities reach capacity failure earlier and remain there longer.
 
-Population vulnerability
+Cooling adaptation can worsen inequality through:
 
-This framework turns that insight into simple, transparent metrics that anyone can compute from basic weather data.
+Waste heat emissions
 
-Core Inputs
-1. Local Baselines
+Grid overload and blackouts
 
-Every location requires its own thresholds.
+Rising electricity costs
 
-Daytime baseline
+Local microclimate warming
 
-Examples:
+Indoor Exposure and Built Environment
 
-30–32 °C in humid climates
+Most heat-related deaths occur indoors. Building insulation, ventilation, cooling access, housing density, and power reliability are key determinants — making heat risk as much an infrastructure problem as a climate one.
 
-34–36 °C in arid regions
+Economic Compulsion
 
-Nighttime recovery baseline
+Heat risk is often structurally forced. Piece-rate pay, absent work-stoppage protections, energy shut-offs, and limited public cooling spaces mean many people cannot reduce exposure even when it becomes dangerous. Biological limits then become policy outcomes.
 
-Typically:
+Health System Capacity Limits
 
-24–26 °C minimum temperature
+Medical systems are a critical amplification pathway in heat disasters. Capacity failure occurs when:
 
-Adjusted for:
+Emergency services become saturated
 
-Housing quality
+Hospitals lose cooling or power reliability
 
-AC prevalence
+Staffing shortages worsen during heat waves
 
-Urban heat-island effects
+Supply chains for IV fluids, medications, and equipment are stressed
 
-2. Multi-Day Weather Sequences
+When health systems degrade, mortality rises sharply even without further temperature increases.
 
-Inputs include:
+Nonlinear Risk, Cumulative Damage, and the Stages of Failure
 
-Hourly or 3-hourly temperature
+Heat risk escalates across three linked stages:
 
-Humidity
+Stable:
+Recovery intact; infrastructure functioning normally; mortality near baseline.
 
-These can be:
+Straining:
+Nighttime recovery impaired; dehydration, illness, and grid instability increase; morbidity rises.
 
-Historical events (Chicago 1995, Europe 2003)
+Failure:
+Recovery absent; biological and infrastructural systems overwhelmed; mortality accelerates.
 
-Synthetic warming scenarios (+2–3 °C)
+Peak mortality often lags peak temperature due to cumulative stress. Repeated exposure causes lasting damage — chronic kidney injury, cardiovascular strain, permanently reduced heat tolerance — even after apparent recovery.
 
-3. Optional System Context
+Dry vs. Humid Heat
 
-Additional indicators improve realism:
+Humid heat limits evaporative cooling, causing rapid thermal overload. Dry heat drives dehydration and gradual cumulative strain. Both pathways lead to capacity failure.
 
-Grid strain (% of peak load)
+Water–Energy Nexus
 
-Vulnerable population factors
+Extreme heat simultaneously spikes electricity and water demand while reducing power plant efficiency and grid reliability — creating the risk of synchronous infrastructure collapse where cooling and water supply fail together.
 
-Age
+Compound Hazards and Ecological Feedbacks
 
-Health status
+Heat disasters often intensify when combined with other hazards that remove coping capacity, including wildfire smoke, drought, air pollution, or storm-related power outages.
 
-Socioeconomic conditions
+Heat also stresses ecological systems, triggering feedback loops:
 
-AC access
+Crop failure and food insecurity
 
-Key Computed Metrics (Tw* Family)
+Livestock mortality
 
-These metrics make the conceptual model operational.
+Urban tree canopy loss reducing future cooling
 
-1. Cumulative Heat Load (CHL)
-What it captures
+Water system degradation
 
-Total heat absorbed above the daytime baseline.
+These dynamics make heat disasters coupled human–environment capacity failures.
 
-Definition
+The Unified Principle
 
-Degree-hours above threshold, humidity-weighted:
+Heat disasters emerge from three converging forces:
 
-CHL = Σ [ w_humid × max( T_eff − T_base_day, 0 ) ]
+Cumulative thermal and hydration load
 
-Where T_eff may be:
+Reduced biological, infrastructural, and cognitive recovery capacity
 
-Apparent temperature
+Constraints on exposure reduction
 
-Wet-bulb temperature
+Adaptation in one group (heavy cooling use) can intensify exposure for others through local heat emissions, energy demand, and inequality.
 
-A simple temperature-humidity proxy
-
-Interpretation
-
-CHL explains why heatwaves can become deadly even when daily peaks seem moderate — because heat accumulates over time.
-
-2. Hot Night Excess (HNe) — Recovery Deficit
-What it captures
-
-Whether nights allow physiological and infrastructure recovery.
-
-Definition
-
-Degree-hours above nighttime baseline during the sleep window (20:00–08:00):
-
-HNe = Σ max( T_night − T_base_night, 0 )
-
-Key insight
-
-Warm nights are the strongest predictor of hospitalizations and mortality.
-
-Variants include:
-
-Severe HNe threshold: 28 °C
-
-Continuous metric replacing binary “tropical night” indicators
-
-3. Compound Day-Night Strain Indicator
-What it captures
-
-The most dangerous pattern — when heat never lets up.
-
-Components:
-
-Consecutive high-CHL days
-
-Consecutive high-HNe nights
-
-Length of compound streaks
-
-Optional modifiers:
-
-Grid strain
-
-Vulnerability factors
-
-Conceptual form:
-
-Risk Index ∝ f( CHL, HNe, streak length, system margins )
-
-No universal formula — calibration is location-specific.
-
-The Risk Curve: Stable → Straining → Failure
-
-Heat risk rises nonlinearly as system capacity is exceeded.
-
-Stable (Absorbing)
-
-Systems operate within limits.
-
-Indicators:
-
-Low or resetting CHL
-
-Minimal HNe
-
-No compound streaks
-
-Normal grid demand
-
-Straining (Capacity Crossover)
-
-Recovery windows shrink.
-
-Indicators:
-
-Rising multi-day CHL
-
-Elevated HNe for 2+ nights
-
-Emerging compound streaks
-
-Grid stress signals
-
-This stage drove most mortality in Chicago 1995 and Europe 2003.
-
-Failure (Cascade)
-
-Self-reinforcing breakdown occurs.
-
-Indicators:
-
-Very high CHL + HNe
-
-Long compound streaks
-
-Grid outages
-
-Emergency services overwhelmed
-
-At this stage, one additional hot night can dramatically increase harm.
-
-Why Risk Escalates Nonlinearly
-
-Three compounding mechanisms:
-
-1. Probability compounding
-
-Multi-day heatwaves increase faster than single-day extremes.
-
-2. Load accumulation
-
-Heat storage grows daily when recovery fails.
-
-3. Vulnerability amplification
-
-Compound heat exposure raises mortality risk significantly, especially for elderly and low-income populations.
-
-Output Visualizations
-
-The framework emphasizes making invisible dynamics visible.
-
-Timeline View
-
-Shows:
-
-Daily max/min temperature
-
-Humidity or wet-bulb overlay
-
-Rising CHL curve
-
-Nighttime HNe bars
-
-Risk State Progression
-
-Color-coded system states:
-
-Green — Stable
-
-Amber — Straining
-
-Red — Failure
-
-Nonlinear Risk Gauge
-
-Displays escalation based on:
-
-Consecutive hot nights
-
-Compound streak length
-
-Grid strain
-
-Vulnerability factors
-
-Example Scenarios
-Chicago 1995
-
-Moderate daytime heat but extreme nighttime warmth.
-
-Recovery failure dominated risk.
-
-Europe 2003
-
-Long duration with high CHL and persistent hot nights.
-
-Risk multiplier climbed continuously.
-
-Synthetic +2–3 °C Warming
-
-Demonstrates how small baseline warming:
-
-Accelerates CHL growth
-
-Eliminates recovery windows earlier
-
-Triggers failure states sooner
-
-Why This Framework Matters
-
-Peak temperature alone misses the mechanisms that cause harm.
-
-This approach focuses on what actually breaks:
-
-Heat accumulation (CHL)
-
-Recovery failure (HNe)
-
-Compound persistence
-
-System capacity margins
-
-What This Framework Is (and Is Not)
-It IS:
-
-A transparent public-data model
-
-A systems-risk framework
-
-A literacy tool for understanding heat risk
-
-It is NOT:
-
-A weather forecast model
-
-A physiological simulation
-
-A replacement for operational heat indices
-
-The Big Insight
-
-Heat disasters are not defined by how hot it gets.
-
-They are defined by how long systems fail to cool.
-
-System margin toggles connect weather to infrastructure and people, not just thermometers.
-
-The framework avoids WBGT pitfalls by centering duration, recovery, and capacity—the things that actually break first.# Heat-Risk-as-Capacity-Failure-A-Computable-Public-Data-Framework
+Heat ceases to be a weather hazard and becomes a systemic mass-casualty risk when recovery windows disappear and exposure cannot be reduced.
