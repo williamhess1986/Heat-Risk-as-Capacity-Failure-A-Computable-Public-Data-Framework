@@ -1,272 +1,330 @@
 Heat Risk and System Capacity
-A Practical, Computable Framework
-1. The Core Idea
-Heat disasters are rarely about the hottest temperature of the day. They’re about capacity failure: when people, buildings, and infrastructure can no longer shed accumulated heat.
+A Practical, Computable Public-Data Framework
+The Core Idea
 
-The key driver is cumulative heat load with recovery—how hot, how humid, for how long, and whether nights cool enough for bodies and systems to reset. A city’s effective heat stress isn’t a single number; it’s a location‑specific Tw\* shaped by climate, housing, AC access, grid strength, and population vulnerability.
+Heat disasters are rarely about the single hottest temperature of the day.
+
+They occur when system capacity fails — when people, buildings, and infrastructure can no longer shed accumulated heat.
+
+The key driver is cumulative heat load with recovery:
+
+How hot it gets
+
+How humid it is
+
+How long it lasts
+
+Whether nights cool enough for bodies and systems to reset
+
+A city’s effective heat stress is not one number.
+
+It is a location-specific heat burden (Tw*) shaped by:
+
+Climate baseline
+
+Housing conditions
+
+Air-conditioning access
+
+Grid reliability
+
+Population vulnerability
 
 This framework turns that insight into simple, transparent metrics that anyone can compute from basic weather data.
 
-2. Core Inputs
-2.1 Local baseline / zone
-Every location needs its own thresholds:
+Core Inputs
+1. Local Baselines
 
-Daytime baseline (e.g., 30–32°C in humid tropics, 34–36°C in arid zones)
+Every location requires its own thresholds.
 
-Nighttime recovery baseline (typically 24–26°C, adjusted for housing + AC prevalence)
+Daytime baseline
 
-2.2 Multi‑day weather sequences
-Hourly or 3‑hourly temperature + humidity
+Examples:
 
-Can be:
+30–32 °C in humid climates
 
-Historical (Chicago 1995, Europe 2003)
+34–36 °C in arid regions
 
-Synthetic (e.g., +2–3°C warming applied to past events)
+Nighttime recovery baseline
 
-2.3 Optional system context
-Grid strain proxy (% of peak load)
+Typically:
 
-Vulnerable population factor (age, health, SES, AC access)
+24–26 °C minimum temperature
 
-3. Key Computed Metrics (Tw\* Family)
-These are the “fast‑turnaround” metrics that make the conceptual model operational.
+Adjusted for:
 
-3.1 Cumulative Heat Load (CHL)
-What it captures: How much heat the system has absorbed above its local baseline.
+Housing quality
 
-Definition: Degree‑hours (or degree‑days) above a daytime baseline, humidity‑weighted.
+AC prevalence
 
-CHL
-=
-∑
-hours
-𝑤
-humid
-⋅
-max
-⁡
-(
-𝑇
-eff
-−
-𝑇
-base,day
-,
-0
-)
-Where 
-𝑇
-eff
- can be:
+Urban heat-island effects
+
+2. Multi-Day Weather Sequences
+
+Inputs include:
+
+Hourly or 3-hourly temperature
+
+Humidity
+
+These can be:
+
+Historical events (Chicago 1995, Europe 2003)
+
+Synthetic warming scenarios (+2–3 °C)
+
+3. Optional System Context
+
+Additional indicators improve realism:
+
+Grid strain (% of peak load)
+
+Vulnerable population factors
+
+Age
+
+Health status
+
+Socioeconomic conditions
+
+AC access
+
+Key Computed Metrics (Tw* Family)
+
+These metrics make the conceptual model operational.
+
+1. Cumulative Heat Load (CHL)
+What it captures
+
+Total heat absorbed above the daytime baseline.
+
+Definition
+
+Degree-hours above threshold, humidity-weighted:
+
+CHL = Σ [ w_humid × max( T_eff − T_base_day, 0 ) ]
+
+Where T_eff may be:
 
 Apparent temperature
 
-Wet‑bulb
+Wet-bulb temperature
 
-A simple T + RH function
+A simple temperature-humidity proxy
 
-Interpretation:  
-CHL shows why “not that hot yet” heatwaves still kill—because the load keeps building.
+Interpretation
 
-3.2 Hot Night Excess (HNe) / Recovery Deficit
-What it captures: Whether nights allow recovery. This is the strongest predictor of hospitalizations.
+CHL explains why heatwaves can become deadly even when daily peaks seem moderate — because heat accumulates over time.
 
-Definition: °C·h above a nighttime threshold during the sleep window (20:00–08:00).
+2. Hot Night Excess (HNe) — Recovery Deficit
+What it captures
 
-HNe
-=
-∑
-20:00–08:00
-max
-⁡
-(
-𝑇
-night
-−
-𝑇
-base,night
-,
-0
-)
-Variants:
+Whether nights allow physiological and infrastructure recovery.
 
-Severe HNe: threshold at 28°C
+Definition
 
-Strongly associated with elderly and low‑SES hospitalization spikes
+Degree-hours above nighttime baseline during the sleep window (20:00–08:00):
 
-Binary “tropical night” → replaced by a continuous, more predictive metric
+HNe = Σ max( T_night − T_base_night, 0 )
 
-Interpretation:  
-Warm nights are the hinge between “straining” and “failure.”
+Key insight
 
-3.3 Compound Day–Night Strain Indicator
-What it captures: The most dangerous pattern—when heat never lets up.
+Warm nights are the strongest predictor of hospitalizations and mortality.
+
+Variants include:
+
+Severe HNe threshold: 28 °C
+
+Continuous metric replacing binary “tropical night” indicators
+
+3. Compound Day-Night Strain Indicator
+What it captures
+
+The most dangerous pattern — when heat never lets up.
 
 Components:
 
-Consecutive hot days (CHL above threshold)
+Consecutive high-CHL days
 
-Consecutive hot nights (HNe above threshold)
+Consecutive high-HNe nights
 
-Compound streaks (both exceeded for N cycles)
+Length of compound streaks
 
-System margin toggles: grid strain, vulnerable population factor
+Optional modifiers:
 
-Composite form (conceptual):
+Grid strain
 
-RiskIndex
-∝
-𝑓
-(
-CHL
-,
-HNe
-,
-streak length
-,
-grid strain
-,
-vulnerability
-)
-No universal formula—each city calibrates to its own history.
+Vulnerability factors
 
-4. The Risk Curve: Stable → Straining → Failure
-Heat risk rises nonlinearly. These states overlap and shift by location.
+Conceptual form:
 
-4.1 Stable / Absorbing
-Systems operate within design limits.
+Risk Index ∝ f( CHL, HNe, streak length, system margins )
 
-Metric signature:
+No universal formula — calibration is location-specific.
 
-CHL low or resetting daily
+The Risk Curve: Stable → Straining → Failure
 
-HNe near zero
+Heat risk rises nonlinearly as system capacity is exceeded.
+
+Stable (Absorbing)
+
+Systems operate within limits.
+
+Indicators:
+
+Low or resetting CHL
+
+Minimal HNe
 
 No compound streaks
 
-Grid demand normal
+Normal grid demand
 
-4.2 Straining / Capacity Crossover
-Demand begins to exceed capacity; recovery windows shrink.
+Straining (Capacity Crossover)
 
-Metric signature:
+Recovery windows shrink.
 
-CHL rising for multiple days
+Indicators:
 
-HNe elevated for 2+ nights (e.g., min temp >25°C)
+Rising multi-day CHL
 
-Compound streaks forming
+Elevated HNe for 2+ nights
 
-Grid strain flags
+Emerging compound streaks
 
-Hospital admissions rising
+Grid stress signals
 
-This is where Chicago 1995 and Europe 2003 spent most of their deadly period.
+This stage drove most mortality in Chicago 1995 and Europe 2003.
 
-4.3 Failure / Cascade
-Failures reinforce each other; local systems cannot self‑correct.
+Failure (Cascade)
 
-Metric signature:
+Self-reinforcing breakdown occurs.
+
+Indicators:
 
 Very high CHL + HNe
 
 Long compound streaks
 
-Grid at/beyond capacity, outages
+Grid outages
 
-EMS/hospitals overwhelmed
+Emergency services overwhelmed
 
-Here the curve steepens: one more hot night can double the harm.
+At this stage, one additional hot night can dramatically increase harm.
 
-5. Nonlinear Escalation (Risk Multiplier)
-Why the curve bends upward:
+Why Risk Escalates Nonlinearly
 
-Compounding probabilities:  
-Multi‑day heatwaves increase faster than single‑day extremes as the climate warms.
+Three compounding mechanisms:
 
-Compounding load:  
-CHL and HNe accumulate; each day adds to a stock.
+1. Probability compounding
 
-Compounding vulnerability:  
-Studies show compound day–night heat yields higher mortality odds (OR 1.1–1.3+), especially for elderly and low‑SES groups.
+Multi-day heatwaves increase faster than single-day extremes.
 
-The framework expresses this as a risk multiplier that jumps sharply once thresholds are crossed.
+2. Load accumulation
 
-6. Output Visualizations
-These make the invisible dynamics visible.
+Heat storage grows daily when recovery fails.
 
-6.1 Timeline Plot
-Daily max/min
+3. Vulnerability amplification
 
-Humidity or Tw overlay
+Compound heat exposure raises mortality risk significantly, especially for elderly and low-income populations.
 
-CHL as a rising curve
+Output Visualizations
 
-HNe as nighttime bars
+The framework emphasizes making invisible dynamics visible.
 
-Shows how load builds even when daytime peaks look modest.
+Timeline View
 
-6.2 Risk State Progression
-A color band or panel showing:
+Shows:
 
-Green → Stable
+Daily max/min temperature
 
-Amber → Straining
+Humidity or wet-bulb overlay
 
-Red → Failure
+Rising CHL curve
 
-Driven by CHL, HNe, and compound streaks.
+Nighttime HNe bars
 
-6.3 Nonlinear Escalation Gauge
-A dial showing the risk multiplier responding to:
+Risk State Progression
+
+Color-coded system states:
+
+Green — Stable
+
+Amber — Straining
+
+Red — Failure
+
+Nonlinear Risk Gauge
+
+Displays escalation based on:
 
 Consecutive hot nights
 
-Compound streaks
+Compound streak length
 
 Grid strain
 
-Vulnerability factor
+Vulnerability factors
 
-This is the “jumpiness” made visual.
-
-7. Demo Scenarios
+Example Scenarios
 Chicago 1995
-Moderate daytime peaks
 
-Extremely warm nights
+Moderate daytime heat but extreme nighttime warmth.
 
-HNe dominates
-
-Shows how recovery failure drives mortality
+Recovery failure dominated risk.
 
 Europe 2003
-Long duration
 
-High CHL
+Long duration with high CHL and persistent hot nights.
 
-Long compound streaks
+Risk multiplier climbed continuously.
 
-Risk multiplier climbs relentlessly
+Synthetic +2–3 °C Warming
 
-Synthetic +2–3°C warming
-Apply uniform warming to past events
+Demonstrates how small baseline warming:
 
-CHL and HNe rise faster
+Accelerates CHL growth
 
-Straining → Failure transitions occur earlier and more often
+Eliminates recovery windows earlier
 
-8. README Framing (Drop‑In)
-Beyond Peak Temperature: Why Recovery Windows and System Margins Matter More
+Triggers failure states sooner
 
-Peak temperature alone misses the mechanisms that kill.
+Why This Framework Matters
 
-CHL shows load accumulation.
+Peak temperature alone misses the mechanisms that cause harm.
 
-HNe shows recovery failure, the strongest predictor of harm.
+This approach focuses on what actually breaks:
 
-Compound day–night metrics capture the highest‑risk patterns.
+Heat accumulation (CHL)
+
+Recovery failure (HNe)
+
+Compound persistence
+
+System capacity margins
+
+What This Framework Is (and Is Not)
+It IS:
+
+A transparent public-data model
+
+A systems-risk framework
+
+A literacy tool for understanding heat risk
+
+It is NOT:
+
+A weather forecast model
+
+A physiological simulation
+
+A replacement for operational heat indices
+
+The Big Insight
+
+Heat disasters are not defined by how hot it gets.
+
+They are defined by how long systems fail to cool.
 
 System margin toggles connect weather to infrastructure and people, not just thermometers.
 
